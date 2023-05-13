@@ -2,9 +2,9 @@ import React from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Bubble from '../components/Bubble';
-import ContactForm from '../components/contactForm';
+import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
-import '../app/styles.css';
+import '../public/styles/styles.css';
 
 export default function IndexPage() {
 

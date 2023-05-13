@@ -1,5 +1,5 @@
 import React from 'react';
-import '../app/styles.css';
+import '../public/styles/styles.css';
 import Image from 'next/image';
 
 export interface BubbleProps {

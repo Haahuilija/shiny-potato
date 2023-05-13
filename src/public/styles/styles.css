@@ -11,7 +11,7 @@ body {
 
 /* Banner image styling */
 .banner-image {
-  background-image: url('/banner-image.jpeg');
+  background-image: url('../images/banner-image.jpeg');
   height: 400px;
   background-size: cover;
   background-position: center;
