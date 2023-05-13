@@ -9,7 +9,7 @@ export interface BubbleProps {
 }
 
 const Bubble: React.FC<BubbleProps> = ({ title, items, img }) => {
-  const iconSrc = `${img}`;
+  const iconSrc = `/images/${img}`;
 
   return (
     <div className="bubble">
