@@ -5,6 +5,14 @@ import Bubble from '../components/Bubble';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 import '../public/styles/styles.css';
+import bubbleImage1 from '../public/images/bubble_image_1.png';
+import bubbleImage2 from '../public/images/bubble_image_2.png';
+import bubbleImage3 from '../public/images/bubble_image_3.png';
+import bubbleImage4 from '../public/images/bubble_image_4.png';
+import bubbleIcon1 from '../public/images/bubble-icon-1.png';
+import bubbleIcon2 from '../public/images/bubble-icon-2.png';
+import bubbleIcon3 from '../public/images/bubble-icon-3.png';
+import bubbleIcon4 from '../public/images/bubble-icon-4.png';
 
 export default function IndexPage() {
 
@@ -15,10 +23,10 @@ export default function IndexPage() {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
             <Header />
-            <h1 className='description_h1'>Pienimuotoista tekstin selkeyttämistä ja kielenhuoltoa - suurella sydämellä!</h1>
             <div className="bubbles-container">
                 <div className="bubble-container">
-                    <Bubble img='bubble-icon-1.png'
+                    <Bubble img={bubbleIcon1}
+                        backgroundImage={bubbleImage1}
                         title="Mitä?"
                         items={[
                             "Tarjoan osaamistani ja innostustani suomenkielisten tekstien käsittelyä kohtaan myös sinun käyttöösi.",
@@ -28,7 +36,8 @@ export default function IndexPage() {
                     />
                 </div>
                 <div className="bubble-container">
-                    <Bubble img="bubble-icon-2.png"
+                    <Bubble img={bubbleIcon2}
+                        backgroundImage={bubbleImage2}
                         title="Miksi kirjoitetun tekstin selkeys, virheettömyys ja helppolukuisuus on tärkeää?"
                         items={[
                             "Selkeän kielen periaatteiden mukaisesti kirjoitettu teksti tavoittaa lukijan todennäköisemmin kuin teksti, jossa näitä seikkoja ei ole huomioitu.",
@@ -41,7 +50,8 @@ export default function IndexPage() {
                     />
                 </div>
                 <div className="bubble-container">
-                    <Bubble img="bubble-icon-3.png"
+                    <Bubble img={bubbleIcon3}
+                        backgroundImage={bubbleImage3}
                         title="Hinnasto"
                         items={[
                             "Laskutan tekemästäni työstä 55e/h UKKO.fi-kevytyrittäjänä.",
@@ -51,7 +61,8 @@ export default function IndexPage() {
                     />
                 </div>
                 <div className="bubble-container">
-                    <Bubble img="bubble-icon-4.png"
+                    <Bubble img={bubbleIcon4}
+                        backgroundImage={bubbleImage4}
                         title="Minä"
                         items={[
                             "Olen koulutukseltani filosofian maisteri (2022).",
