@@ -1,36 +1,35 @@
 {
-  "name": "cloud-run-microservice-template",
-  "version": "1.0.0",
-  "description": "Microservice template for Cloud Run",
-  "main": "index.js",
-  "engines": {
-    "node": "16"
-  },
+  "name": "tua-website",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "private": true,
   "scripts": {
-    "start": "node index.js",
-    "dev": "NODE_ENV=development nodemon index.js | pino-pretty",
-    "lint": "eslint --ext *.js --ext test/*.js",
-    "fix": "eslint --fix --ext *.js --ext test/*.js",
-    "build-image": "gcloud builds submit --pack image=us-central1-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/samples/microservice-template:manual",
-    "deploy": "gcloud run deploy microservice-template --image us-central1-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/samples/microservice-template:manual --region us-central1",
-    "test": "mocha test/app.test.js --check-leaks",
-    "system-test": "mocha test/system.test.js --timeout=180000"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "author": "Google LLC",
-  "license": "Apache-2.0",
+  "author": {
+    "name": "Saul Koskinen",
+    "email": "saul.koskinen@gmail.com"
+  },
   "dependencies": {
-    "express": "^4.17.1",
-    "gcp-metadata": "^5.0.0",
-    "google-auth-library": "^8.0.0",
-    "pino": "^8.0.0",
-    "pino-http": "^8.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.0.0",
-    "eslint-config-google": "^0.14.0",
-    "got": "^11.8.2",
-    "mocha": "^10.0.0",
-    "nodemon": "^2.0.7",
-    "supertest": "^6.1.3"
+    "@google-cloud/recaptcha-enterprise": "^3.4.1",
+    "@google-cloud/secret-manager": "^4.2.2",
+    "@sendgrid/mail": "^7.7.0",
+    "@types/node": "20.1.4",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "autoprefixer": "10.4.14",
+    "axios": "^1.3.5",
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.2",
+    "next": "13.4.2",
+    "postcss": "8.4.23",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
+    "tailwindcss": "3.3.2",
+    "typescript": "5.0.4"
   }
 }
