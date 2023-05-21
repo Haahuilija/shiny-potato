@@ -1,31 +1,31 @@
 import React from 'react';
-import Image, { ImageLoader, StaticImageData } from 'next/image';
+import Image, { StaticImageData } from 'next/image';
+import '../public/styles/styles.css';
 
 export interface BubbleProps {
   title: string;
   items: string[];
-  img: StaticImageData;
-  backgroundImage: StaticImageData;
+  icon: StaticImageData;
+  background: StaticImageData;
 }
 
-const imageLoader: ImageLoader = ({ src, width, quality }) => {
-  return `${src}?w=${width}&q=${quality || 75}`;
-};
-
-const Bubble: React.FC<BubbleProps> = ({ title, items, img, backgroundImage }) => {
-  const backgroundImageUrl = `${process.env.PUBLIC_URL}${backgroundImage}`;
+const Bubble: React.FC<BubbleProps> = ({ title, items, icon, background }) => {
+  const backgroundImageUrl = background.src;
+  const iconUrl = icon.src;
 
   return (
-    <div style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
-      <div>
-        <Image src={img} alt={title} width={100} height={100} loader={imageLoader} />
+    <div className="bubble-container" style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
+      <div className="bubble">
+        <div className="bubble-icon">
+          <Image src={iconUrl} alt={title} width={100} height={100} />
+        </div>
+        <h2 className="bubble-title">{title}</h2>
+        <ul className="bubble-list">
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
       </div>
-      <h2>{title}</h2>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
     </div>
   );
 };

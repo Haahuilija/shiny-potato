@@ -6,13 +6,13 @@ import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 import '../public/styles/styles.css';
 import bubbleImage1 from '../public/images/bubble_image_1.png';
+import bubbleIcon1 from '../public/images/bubble_icon_1.png';
 import bubbleImage2 from '../public/images/bubble_image_2.png';
+import bubbleIcon2 from '../public/images/bubble_icon_2.png';
 import bubbleImage3 from '../public/images/bubble_image_3.png';
+import bubbleIcon3 from '../public/images/bubble_icon_3.png';
 import bubbleImage4 from '../public/images/bubble_image_4.png';
-import bubbleIcon1 from '../public/images/bubble-icon-1.png';
-import bubbleIcon2 from '../public/images/bubble-icon-2.png';
-import bubbleIcon3 from '../public/images/bubble-icon-3.png';
-import bubbleIcon4 from '../public/images/bubble-icon-4.png';
+import bubbleIcon4 from '../public/images/bubble_icon_4.png';
 
 export default function IndexPage() {
 
@@ -25,8 +25,9 @@ export default function IndexPage() {
             <Header />
             <div className="bubbles-container">
                 <div className="bubble-container">
-                    <Bubble img={bubbleIcon1}
-                        backgroundImage={bubbleImage1}
+                    <Bubble
+          icon={bubbleIcon1}
+          background={bubbleImage1}
                         title="Mitä?"
                         items={[
                             "Tarjoan osaamistani ja innostustani suomenkielisten tekstien käsittelyä kohtaan myös sinun käyttöösi.",
@@ -36,8 +37,9 @@ export default function IndexPage() {
                     />
                 </div>
                 <div className="bubble-container">
-                    <Bubble img={bubbleIcon2}
-                        backgroundImage={bubbleImage2}
+                    <Bubble
+                                  icon={bubbleIcon2}
+                                  background={bubbleImage2}
                         title="Miksi kirjoitetun tekstin selkeys, virheettömyys ja helppolukuisuus on tärkeää?"
                         items={[
                             "Selkeän kielen periaatteiden mukaisesti kirjoitettu teksti tavoittaa lukijan todennäköisemmin kuin teksti, jossa näitä seikkoja ei ole huomioitu.",
@@ -50,8 +52,9 @@ export default function IndexPage() {
                     />
                 </div>
                 <div className="bubble-container">
-                    <Bubble img={bubbleIcon3}
-                        backgroundImage={bubbleImage3}
+                    <Bubble
+                                  icon={bubbleIcon3}
+                                  background={bubbleImage3}
                         title="Hinnasto"
                         items={[
                             "Laskutan tekemästäni työstä 55e/h UKKO.fi-kevytyrittäjänä.",
@@ -61,8 +64,9 @@ export default function IndexPage() {
                     />
                 </div>
                 <div className="bubble-container">
-                    <Bubble img={bubbleIcon4}
-                        backgroundImage={bubbleImage4}
+                    <Bubble
+                                  icon={bubbleIcon4}
+                                  background={bubbleImage4}
                         title="Minä"
                         items={[
                             "Olen koulutukseltani filosofian maisteri (2022).",
