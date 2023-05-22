@@ -5,6 +5,9 @@ FROM node:19-alpine
 # Create and change to the app directory.
 WORKDIR /usr/src/app
 
+# Install Git.
+RUN apk update && apk add --no-cache git
+
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure both package.json AND package-lock.json are copied.
 # Copying this separately prevents re-running npm install on every code change.
