@@ -85,66 +85,38 @@ header {
   margin-bottom: 1.5rem;
   padding: 0.5rem;
   border-radius: 20px;
-  width: 50%;
-  background-color: #ffffff;
+  width: 100%; /* Update width to 100% */
+  flex-grow: 1; /* Add flex-grow property */
 }
 
 .bubble-container:nth-child(odd) {
-  margin-right: 10%;
+  margin-right: auto;
+  flex-direction: row-reverse;
+  background-size: cover;
+  background-position: right;
 }
 
 .bubble-container:nth-child(even) {
   margin-left: auto;
-}
-
-.bubble:nth-child(odd) {
-  order: 1;
-}
-
-.bubble:nth-child(even) {
-  order: 2;
-  margin-left: auto;
+  background-size: cover;
+  background-position: left;
 }
 
 .bubble {
-  border: 1px solid #ccc;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 10px;
   display: grid;
   grid-template-columns: 150px auto;
   grid-template-rows: auto auto;
-  grid-template-areas: 
+  grid-template-areas:
     "image title"
     "image list";
   flex-direction: column;
+  position: relative;
 }
 
-.bubble:before,
-.bubble:after {
-  content: "";
-  display: block;
-  height: 10px;
-  width: 10px;
-  background: #fff;
-  position: absolute;
-  bottom: -5px;
-  border-radius: 5px;
-}
-
-.bubble:before {
-  left: -5px;
-  transform: rotate(-45deg);
-  box-shadow: -3px 3px 3px rgba(0,0,0,0.2);
-}
-
-.bubble:after {
-  right: -5px;
-  transform: rotate(45deg);
-  box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
-}
-
-.bubble-image {
+.bubble-icon {
   grid-area: image;
   justify-self: center;
   align-self: start;
@@ -164,38 +136,11 @@ header {
 
 .bubble-list {
   grid-area: list;
-  list-style-type: ' ★ ';
-  justify-content: center;
+  list-style-type: disc;
+  justify-self: start;
   text-align: left;
   margin: 0;
   padding-left: 50px;
-}
-
-@media screen and (max-width: 768px) {
-  .bubbles-form-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-}
-
-@media screen and (max-width: 479px) {
-  .bubble {
-    flex-direction: column;
-    width: 80px;
-    height: 80px;
-    font-size: 20px;
-  }
-
-  .bubble-image {
-    margin-bottom: 10px;
-  }
-
-  .bubble-title {
-    font-size: 18px;
-  }
-
-  .bubble-list {
-    font-size: 14px;
-  }
 }
 
 /* Contact form styling */
