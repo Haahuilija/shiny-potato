@@ -78,6 +78,12 @@ header {
 }
 
 /* Bubble styling */
+.bubbles-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow containers to wrap to the next line */
+  align-items: stretch; /* Make child containers have equal height */
+}
+
 .bubble-container {
   display: flex;
   align-items: center;

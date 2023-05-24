@@ -56,7 +56,7 @@ export default function Home() {
                         background={bubbleImage3}
                         title="Hinnasto"
                         items={[
-                            "Laskutan tekemästäni työstä 55e/h UKKO.fi-kevytyrittäjänä.",
+                            "Laskutan tekemästäni työstä 50e/h UKKO.fi-kevytyrittäjänä.",
                             "Minimilaskutus on yksi tunti.",
                             "Pyydä tarjous jos sinulla on pitkä teksti (yli 10 sivua), kuten opinnäytetyö, tarkistusta vailla!"
                         ]}
@@ -76,7 +76,7 @@ export default function Home() {
                     />
                 </div>
             </div>
-            <h1 className='description_h1'>Ota Yhteyttä! (työn alla)</h1>
+            <h1 className='description_h1'>Ota yhteyttä! (työn alla)</h1>
             <ContactForm />
             <Footer />
         </div>
