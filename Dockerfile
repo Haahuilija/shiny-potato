@@ -6,7 +6,7 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Install dependencies based on the preferred package manager
+# Install dependencies based on the preferred package manager and Git
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
@@ -15,6 +15,10 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
+#Install Git
+RUN apk fix && \
+    apk --no-cache --update add git git-lfs gpg less openssh patch && \
+    git lfs install
 
 # Rebuild the source code only when needed
 FROM base AS builder
