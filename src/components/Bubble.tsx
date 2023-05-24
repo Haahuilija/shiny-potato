@@ -1,6 +1,5 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import '../public/styles/styles.css';
 
 export interface BubbleProps {
   title: string;

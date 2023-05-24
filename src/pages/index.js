@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Bubble from '../components/Bubble';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
-import '../public/styles/styles.css';
 import bubbleImage1 from '../public/images/bubble_image_1.png';
 import bubbleIcon1 from '../public/images/bubble_icon_1.png';
 import bubbleImage2 from '../public/images/bubble_image_2.png';

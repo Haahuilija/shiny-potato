@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import tokenValidation from './assessment';
+import tokenValidation from '../utils/assessment';
 import sendEmail from './sendEmail';
 
 export default async function handleToken(req: NextApiRequest, res: NextApiResponse) {
