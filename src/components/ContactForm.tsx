@@ -68,7 +68,7 @@ const ContactForm = () => {
           type="email"
           className="form-control form-input"
           id="email"
-          placeholder="Sähköpostiosoite johon haluatte meidän vastaavan"
+          placeholder="Sähköpostiosoite, johon haluat minun vastaavan"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
@@ -90,7 +90,7 @@ const ContactForm = () => {
           type="text"
           className="form-control form-input"
           id="schedule"
-          placeholder="Esim. Kahden viikon sisään, 10.9 mennessä"
+          placeholder="Esim. Kahden viikon sisään, 10.9. mennessä"
           value={schedule}
           onChange={(event) => setSchedule(event.target.value)}
         />
