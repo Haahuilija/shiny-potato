@@ -30,3 +30,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## About
 
 This is a website I built for a relative. I decided to make use of this opportunity and use AI to help me, as I learned new things.
+
+Created with Next.js.
+
+Using Google Enterprise reCaptcha API to protect the contact form.
+
+Using Secret Manager so I can avoid hard-coding API keys and Email adresses.
+
+Set up everything using the Google Cloud platform, where I made a new project just for this website.
+Enabled all the APIs needed and got the service running.
+
+There was a need for custom domains as well, so had to set that up in Cloud Run.
+
+Workflow setup: Edit code in VSC, Git repo linked with continuous deployment, where pulling into the Main branh triggers a build event,
+using Docker to run my app in a Dev Container for testing purposes, but also using it to build the images for Cloud Run service.
