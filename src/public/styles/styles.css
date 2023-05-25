@@ -6,7 +6,7 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(11, 215, 251, 0.036);
 }
 
 /* Banner image styling */
@@ -16,7 +16,7 @@ body {
   background-size: cover;
   background-position: center;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 /* Header styling */
@@ -80,19 +80,22 @@ header {
 /* Bubble styling */
 .bubbles-container {
   display: flex;
-  flex-wrap: wrap; /* Allow containers to wrap to the next line */
-  align-items: stretch; /* Make child containers have equal height */
+  flex-wrap: wrap;
+  /* Allow containers to wrap to the next line */
+  align-items: stretch;
+  /* Make child containers have equal height */
 }
 
 .bubble-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  padding: 0.5rem;
-  border-radius: 20px;
-  width: 100%; /* Update width to 100% */
-  flex-grow: 1; /* Add flex-grow property */
+  min-height: 350px;
+  padding: 1px;
+  width: 100%;
+  /* Update width to 100% */
+  flex-grow: 1;
+  /* Add flex-grow property */
 }
 
 .bubble-container:nth-child(odd) {
@@ -111,7 +114,6 @@ header {
 .bubble {
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 10px;
   display: grid;
   grid-template-columns: 150px auto;
   grid-template-rows: auto auto;
@@ -129,6 +131,9 @@ header {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  /* Make the icon round */
+  overflow: hidden;
+  /* Ensure the icon stays within the circular shape */
 }
 
 .bubble-title {
@@ -142,7 +147,7 @@ header {
 
 .bubble-list {
   grid-area: list;
-  list-style-type: disc;
+  list-style-type: ' ★  ';
   justify-self: start;
   text-align: left;
   margin: 0;
