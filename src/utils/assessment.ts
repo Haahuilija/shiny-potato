@@ -1,7 +1,7 @@
 import { RecaptchaEnterpriseServiceClient } from '@google-cloud/recaptcha-enterprise';
+import { getSecretValues } from '../api/secrets';
 
 const PROJECT_ID = 'tua-website-1681296175377';
-const SITE_KEY = '6Letzo8lAAAAAEV5hmLvRtKRenOEkLy8p0cgfh8A';
 
 export default async function validateToken(token: string | null, req: any) {
   if (!token) {
@@ -12,11 +12,12 @@ export default async function validateToken(token: string | null, req: any) {
   console.log('Interpreting reCAPTCHA assessment...');
   try {
     const client = new RecaptchaEnterpriseServiceClient();
+    const { NEXT_PUBLIC_RECAPTCHA_SITE_KEY_TEST } = await getSecretValues();
     const assessmentRequest = {
       assessment: {
         event: {
           token: token,
-          siteKey: SITE_KEY,
+          siteKey: NEXT_PUBLIC_RECAPTCHA_SITE_KEY_TEST,
         },
         expectedAttributes: {
           scoreReasons: true,
