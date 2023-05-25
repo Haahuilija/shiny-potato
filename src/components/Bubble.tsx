@@ -16,7 +16,7 @@ const Bubble: React.FC<BubbleProps> = ({ title, items, icon, background }) => {
     <div className="bubble-container" style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
       <div className="bubble">
         <div className="bubble-icon">
-          <Image src={iconUrl} alt={title} width={100} height={100} />
+          <Image src={iconUrl} alt={title} width={150} height={150} />
         </div>
         <h2 className="bubble-title">{title}</h2>
         <ul className="bubble-list">
