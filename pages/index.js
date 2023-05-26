@@ -1,17 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
-import Bubble from '../components/Bubble';
-import ContactForm from '../components/ContactForm';
-import Footer from '../components/Footer';
-import bubbleImage1 from '../public/images/bubble_image_1.png';
-import bubbleIcon1 from '../public/images/bubble_icon_1.png';
-import bubbleImage2 from '../public/images/bubble_image_2.png';
-import bubbleIcon2 from '../public/images/bubble_icon_2.png';
-import bubbleImage3 from '../public/images/bubble_image_3.png';
-import bubbleIcon3 from '../public/images/bubble_icon_3.png';
-import bubbleImage4 from '../public/images/bubble_image_4.png';
-import bubbleIcon4 from '../public/images/bubble_icon_4.png';
+import Header from '@/components/Header';
+import Bubble from '@/components/Bubble';
+import ContactForm from '@/components/ContactForm';
+import Footer from '@/components/Footer';
+import bubbleImage1 from '@/public/bubble_image_1.png';
+import bubbleIcon1 from '@/public/bubble_icon_1.png';
+import bubbleImage2 from '@/public/bubble_image_2.png';
+import bubbleIcon2 from '@/public/bubble_icon_2.png';
+import bubbleImage3 from '@/public/bubble_image_3.png';
+import bubbleIcon3 from '@/public/bubble_icon_3.png';
+import bubbleImage4 from '@/public/bubble_image_4.png';
+import bubbleIcon4 from '@/public/bubble_icon_4.png';
 
 export default function Home() {
 
