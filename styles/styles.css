@@ -230,3 +230,26 @@ label {
   font-size: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Message sent successfully GIF -styling */
+.overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* You can adjust this to change the background color and opacity */
+}
+
+.success-gif {
+  max-width: 10%;
+  max-height: 10%;
+}
+
+.success-message {
+  margin-top: 20px;
+  color: #ffffff; /* set this to whatever color you want the text to be */
+}

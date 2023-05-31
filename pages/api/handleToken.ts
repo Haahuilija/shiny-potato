@@ -3,7 +3,6 @@ import tokenValidation from './assessment';
 import sendEmail from './sendEmail';
 
 export default async function handleToken(req: NextApiRequest, res: NextApiResponse) {
-
   try {
     console.log('Request body:', req.body); // log the entire request body
   } catch (error) {
@@ -26,12 +25,12 @@ export default async function handleToken(req: NextApiRequest, res: NextApiRespo
     console.log('Token validation successful.');
 
     console.log('Sending email...');
-    await sendEmail(name, email, message, schedule, other, token, req, res);
-    console.log('Email sent successfully');
+    const emailStatus = await sendEmail(name, email, message, schedule, other, token);
+    console.log(emailStatus);
 
     res.status(200).send('Email sent successfully');
   } catch (error) {
     console.error(error);
-    res.status(500).send('Error validating reCAPTCHA token');
+    res.status(500).send('Error validating reCAPTCHA token or sending email');
   }
 }

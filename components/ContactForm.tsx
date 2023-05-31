@@ -169,7 +169,13 @@ const ContactForm = () => {
         Lähetä
       </button>
       {submitStatus && <p>{submitStatus}</p>}
-      {showSuccessVideo && <img src="/success3.gif" alt="Submission Successful" />}
+      {showSuccessVideo && (
+        <div className="overlay">
+          <img className="success-gif" src="/success3.gif" alt="Submission Successful" />
+          <p className="success-message">Viesti lähetetty</p>
+        </div>
+      )
+      }
     </form>
   );
 };
