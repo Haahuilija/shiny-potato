@@ -3,7 +3,7 @@ import axios from 'axios';
 
 declare global {
   interface Window {
-    getToken: (token: string) => Promise<string>;
+    getToken: (token: string) => Promise<void>;
   }
 }
 
@@ -13,62 +13,64 @@ const ContactForm = () => {
   const [message, setMessage] = useState('');
   const [schedule, setSchedule] = useState('');
   const [other, setOther] = useState('');
-  const [formStatus, setFormStatus] = useState(''); // New state variable for form status
+  const [submitStatus, setSubmitStatus] = useState('');
 
-  useEffect(() => {
-    window.getToken = async (token: string) => {
-      console.log("Token:", token);
-      return token;
-    };
-  }, []);
-
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>, token: string) => {
-    e.preventDefault();
-    const formData = {
-      name,
-      email,
-      message,
-      schedule,
-      other,
-      token
-    };
-
-    setFormStatus('Sending email...'); // Update form status
+  const handleSubmit = async (token: string) => {
+    console.log('handleSubmit function called');
+    console.log('Token received:', token);
+    console.log('Sending form data...');
 
     try {
-      const response = await axios.post('@/pages/api/handleToken', formData);
+      console.log('Name:', name);
+      console.log('Email:', email);
+      console.log('Message:', message);
+      console.log('Schedule:', schedule);
+      console.log('Other:', other);
+      console.log('Token:', token);
+
+      const formObject = {
+        name: name,
+        email: email,
+        message: message,
+        schedule: schedule,
+        other: other,
+        token: token,
+      };
+
+      console.log('Form Data:', formObject);
+
+      const response = await axios.post('/api/handleToken', formObject);
+
+      console.log('Form data sent successfully.');
 
       if (response.status === 200) {
         const data = response.data;
-        setFormStatus('Email sent successfully'); // Update form status
+        setSubmitStatus(data.message);
         setName('');
         setEmail('');
         setMessage('');
         setSchedule('');
         setOther('');
       } else {
-        throw new Error('Error sending message');
+        throw new Error('Error sending message 1');
       }
     } catch (error) {
       console.error(error);
-      setFormStatus('Error sending message'); // Update form status
+      setSubmitStatus('Error sending message 2');
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const token = await window.getToken('');
-      await handleFormSubmit(e, token);
-    } catch (error) {
-      console.error(error);
-      setFormStatus('Error sending message'); // Update form status
-    }
+  const getToken = async (token: string): Promise<void> => {
+    console.log('Token:', token);
+    await handleSubmit(token);
   };
 
+  useEffect(() => {
+    window.getToken = getToken;
+  }, [name, email, message, schedule, other]); // pass the state variables as dependencies
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <form className="contact-form" id="demo-form">
       <div className="form-group">
         <label htmlFor="name">Nimi:</label>
         <input
@@ -77,7 +79,10 @@ const ContactForm = () => {
           id="name"
           placeholder="Etunimi Sukunimi"
           value={name}
-          onChange={(event) => setName(event.target.value)}
+          onChange={(event) => {
+            console.log(event.target.value);
+            setName(event.target.value);
+          }}
         />
       </div>
       <div className="form-group">
@@ -88,7 +93,10 @@ const ContactForm = () => {
           id="email"
           placeholder="Sähköpostiosoite, johon haluat minun vastaavan"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(event) => {
+            console.log(event.target.value);
+            setEmail(event.target.value);
+          }}
         />
       </div>
       <div className="form-group">
@@ -99,7 +107,10 @@ const ContactForm = () => {
           placeholder='tekstilaji, pituus, aihe'
           rows={8}
           value={message}
-          onChange={(event) => setMessage(event.target.value)}
+          onChange={(event) => {
+            console.log(event.target.value);
+            setMessage(event.target.value);
+          }}
         ></textarea>
       </div>
       <div className="form-group">
@@ -110,7 +121,10 @@ const ContactForm = () => {
           id="schedule"
           placeholder="Esim. Kahden viikon sisään, 10.9. mennessä"
           value={schedule}
-          onChange={(event) => setSchedule(event.target.value)}
+          onChange={(event) => {
+            console.log(event.target.value);
+            setSchedule(event.target.value);
+          }}
         />
       </div>
       <div className="form-group">
@@ -121,7 +135,10 @@ const ContactForm = () => {
           placeholder="Muuta huomioitavaa, jos sellaista on"
           rows={5}
           value={other}
-          onChange={(event) => setOther(event.target.value)}
+          onChange={(event) => {
+            console.log(event.target.value);
+            setOther(event.target.value);
+          }}
         ></textarea>
       </div>
       <button
@@ -129,11 +146,11 @@ const ContactForm = () => {
         data-sitekey="6Letzo8lAAAAAEV5hmLvRtKRenOEkLy8p0cgfh8A"
         data-callback="getToken"
         type="submit"
-        disabled={formStatus !== ''} // Disable button when form status is not empty
+        disabled={submitStatus !== ''}
       >
         Lähetä
       </button>
-      {formStatus && <p>{formStatus}</p>} {/* Display form status */}
+      {submitStatus && <p>{submitStatus}</p>}
     </form>
   );
 };

@@ -3,8 +3,22 @@ import tokenValidation from './assessment';
 import sendEmail from './sendEmail';
 
 export default async function handleToken(req: NextApiRequest, res: NextApiResponse) {
-  const { name, email, message, schedule, other } = req.body;
-  const token = req.body.token;
+
+  try {
+    console.log('Request body:', req.body); // log the entire request body
+  } catch (error) {
+    console.error('Error logging request body:', error);
+  }
+
+  let name, email, message, schedule, other, token;
+
+  try {
+    ({ name, email, message, schedule, other } = req.body);
+    token = req.body.token;
+    console.log('Token value sent into backend:', token);
+  } catch (error) {
+    console.error('Error destructuring request body:', error);
+  }
 
   try {
     console.log('Validating reCAPTCHA token...');
