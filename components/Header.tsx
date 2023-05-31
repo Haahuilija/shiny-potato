@@ -5,7 +5,7 @@ const Header = () => {
 
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/enterprise.js?render=6Letzo8lAAAAAEV5hmLvRtKRenOEkLy8p0cgfh8A";
+    script.src = "https://www.google.com/recaptcha/enterprise.js?render=6LdUyYwlAAAAAGaNvJAKC6916P2r9Qhl4jL47Ejk";
     script.async = true;
     script.defer = true;
     document.head.appendChild(script);

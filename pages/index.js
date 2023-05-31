@@ -76,7 +76,7 @@ export default function Home() {
                     />
                 </div>
             </div>
-            <h1 className='description_h1'>Ota yhteyttä! (työn alla)</h1>
+            <h1 className='description_h1'>Ota yhteyttä!</h1>
             <ContactForm />
             <Footer />
         </div>

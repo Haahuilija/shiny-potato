@@ -12,12 +12,11 @@ export default async function tokenValidation(token: string | null, req: any) {
   console.log('Interpreting reCAPTCHA assessment...');
   try {
     const client = new RecaptchaEnterpriseServiceClient();
-    const { NEXT_PUBLIC_RECAPTCHA_SITE_KEY_TEST } = await getSecretValues();
     const assessmentRequest = {
       assessment: {
         event: {
           token: token,
-          siteKey: NEXT_PUBLIC_RECAPTCHA_SITE_KEY_TEST,
+          siteKey: '6LdUyYwlAAAAAGaNvJAKC6916P2r9Qhl4jL47Ejk',
         },
         expectedAttributes: {
           scoreReasons: true,

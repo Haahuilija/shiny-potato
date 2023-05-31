@@ -143,7 +143,7 @@ const ContactForm = () => {
       </div>
       <button
         className="g-recaptcha"
-        data-sitekey="6Letzo8lAAAAAEV5hmLvRtKRenOEkLy8p0cgfh8A"
+        data-sitekey="6LdUyYwlAAAAAGaNvJAKC6916P2r9Qhl4jL47Ejk"
         data-callback="getToken"
         type="submit"
         disabled={submitStatus !== ''}
