@@ -1,4 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import sgMail, { MailDataRequired } from '@sendgrid/mail';
 import { getSecretValues } from './secrets';
 
@@ -8,9 +7,7 @@ export default async function sendEmail(
   message: string,
   schedule: string | undefined,
   other: string | undefined,
-  token: string | null,
-  req: NextApiRequest,
-  res: NextApiResponse
+  token: string | null
 ) {
   try {
     // Get the email address values
@@ -40,10 +37,13 @@ export default async function sendEmail(
     sgMail.setApiKey(SENDGRID_API_KEY || 'default');
     await sgMail.send(msg);
     console.log('Email sent successfully');
-    res.status(200).send('Email sent successfully');
+    
+    return 'success';
+
   } catch (error) {
     console.error(error);
     console.log('Error sending email');
-    res.status(500).send('Error sending email');
+    
+    throw new Error('Error sending email');
   }
 }
