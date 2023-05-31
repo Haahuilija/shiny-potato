@@ -14,6 +14,23 @@ const ContactForm = () => {
   const [schedule, setSchedule] = useState('');
   const [other, setOther] = useState('');
   const [submitStatus, setSubmitStatus] = useState('');
+  const [showSuccessVideo, setShowSuccessVideo] = useState(false);
+
+  useEffect(() => {
+    let timerId: number | undefined;
+
+    if (showSuccessVideo) {
+      timerId = window.setTimeout(() => {
+        setShowSuccessVideo(false);
+      }, 2800); // hide the video after 5 seconds
+    }
+
+    return () => {
+      if (timerId) {
+        window.clearTimeout(timerId); // clear timeout if the component is unmounted
+      }
+    };
+  }, [showSuccessVideo]);
 
   const handleSubmit = async (token: string) => {
     console.log('handleSubmit function called');
@@ -51,12 +68,13 @@ const ContactForm = () => {
         setMessage('');
         setSchedule('');
         setOther('');
+        setShowSuccessVideo(true);
       } else {
-        throw new Error('Error sending message 1');
+        throw new Error('Error sending message');
       }
     } catch (error) {
       console.error(error);
-      setSubmitStatus('Error sending message 2');
+      setSubmitStatus('Error sending message');
     }
   };
 
@@ -151,6 +169,7 @@ const ContactForm = () => {
         Lähetä
       </button>
       {submitStatus && <p>{submitStatus}</p>}
+      {showSuccessVideo && <img src="/success3.gif" alt="Submission Successful" />}
     </form>
   );
 };
