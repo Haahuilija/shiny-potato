@@ -4,7 +4,7 @@ interface SecretValues {
   EMAIL_FROM: string | null;
   EMAIL_TO: string | null;
   SENDGRID_API_KEY: string | null;
-  NEXT_PUBLIC_RECAPTCHA_SITE_KEY_TEST: string | null;
+  NEXT_PUBLIC_RECAPTCHA_SITE_KEY: string | null;
 }
 
 export async function getSecretValues(): Promise<SecretValues> {
@@ -22,14 +22,14 @@ export async function getSecretValues(): Promise<SecretValues> {
   });
 
   const [recaptchaSiteKey] = await client.accessSecretVersion({
-    name: 'projects/31744863114/secrets/NEXT_PUBLIC_RECAPTCHA_SITE_KEY_TEST/versions/latest',
+    name: 'projects/31744863114/secrets/NEXT_PUBLIC_RECAPTCHA_SITE_KEY/versions/latest',
   });
 
   const secretValues: SecretValues = {
     EMAIL_FROM: emailFrom?.payload?.data?.toString() ?? null,
     EMAIL_TO: emailTo?.payload?.data?.toString() ?? null,
     SENDGRID_API_KEY: sendGridApiKey?.payload?.data?.toString() ?? null,
-    NEXT_PUBLIC_RECAPTCHA_SITE_KEY_TEST: recaptchaSiteKey?.payload?.data?.toString() ?? null,
+    NEXT_PUBLIC_RECAPTCHA_SITE_KEY: recaptchaSiteKey?.payload?.data?.toString() ?? null,
   };
 
   return secretValues;
