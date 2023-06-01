@@ -61,6 +61,7 @@ const ContactForm = () => {
     }
 
     try {
+
       // Log form data to console
       console.log('Name:', name);
       console.log('Email:', email);
@@ -70,6 +71,7 @@ const ContactForm = () => {
       console.log('Token:', token);
 
       // Prepare form data for submission
+
       const formObject = {
         name: name,
         email: email,
@@ -87,6 +89,9 @@ const ContactForm = () => {
       console.log('Form data sent successfully.');
 
       // If form submission is successful, clear form fields and show success video
+
+      const response = await axios.post('/api/handleToken', formObject);
+
       if (response.status === 200) {
         const data = response.data;
         setSubmitStatus(data.message);
@@ -108,7 +113,6 @@ const ContactForm = () => {
 
   // Function to get reCAPTCHA token and submit form
   const getToken = async (token: string): Promise<void> => {
-    console.log('Token:', token);
     await handleSubmit(token);
   };
 

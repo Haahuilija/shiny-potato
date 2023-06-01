@@ -9,7 +9,6 @@ export default async function tokenValidation(token: string | null, req: any) {
     throw new Error('reCAPTCHA token is missing');
   }
 
-  console.log('Interpreting reCAPTCHA assessment...');
   try {
     const client = new RecaptchaEnterpriseServiceClient();
     const { NEXT_PUBLIC_RECAPTCHA_SITE_KEY } = await getSecretValues();
@@ -33,14 +32,11 @@ export default async function tokenValidation(token: string | null, req: any) {
     }
 
     const score = assessment.riskAnalysis?.score;
-    console.log(`reCAPTCHA assessment score: ${score}`);
 
     if (score === undefined || score === null || score < 0.5) {
-      console.log(`reCAPTCHA score too low: ${score}`);
       return false;
     }
 
-    console.log(`reCAPTCHA score high enough: ${score}`);
     return true;
   } catch (error) {
     console.error(error);
