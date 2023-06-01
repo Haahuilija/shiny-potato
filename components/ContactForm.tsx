@@ -38,9 +38,6 @@ const ContactForm = () => {
   const handleSubmit = async (token: string) => {
     setIsLoading(true);
     const { formIsValid, errors } = validateForm(name, email, message, schedule);
-    console.log('handleSubmit function called');
-    console.log('Token received:', token);
-    console.log('Sending form data...');
 
     if (!formIsValid) {
       setSubmitStatus(errors);
@@ -49,13 +46,6 @@ const ContactForm = () => {
     }
 
     try {
-      console.log('Name:', name);
-      console.log('Email:', email);
-      console.log('Message:', message);
-      console.log('Schedule:', schedule);
-      console.log('Other:', other);
-      console.log('Token:', token);
-
       const formObject = {
         name: name,
         email: email,
@@ -65,11 +55,7 @@ const ContactForm = () => {
         token: token,
       };
 
-      console.log('Form Data:', formObject);
-
       const response = await axios.post('/api/handleToken', formObject);
-
-      console.log('Form data sent successfully.');
 
       if (response.status === 200) {
         const data = response.data;
@@ -92,7 +78,6 @@ const ContactForm = () => {
   };
 
   const getToken = async (token: string): Promise<void> => {
-    console.log('Token:', token);
     await handleSubmit(token);
   };
 

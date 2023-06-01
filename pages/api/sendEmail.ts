@@ -32,18 +32,11 @@ export default async function sendEmail(
       msg.text += `\n\nOther:\n${other}`;
       msg.html += `<p>Other:</p><pre>${other}</pre>`;
     }
-
-    console.log('Sending email...');
     sgMail.setApiKey(SENDGRID_API_KEY || 'default');
     await sgMail.send(msg);
-    console.log('Email sent successfully');
-    
     return 'success';
-
   } catch (error) {
     console.error(error);
-    console.log('Error sending email');
-    
     throw new Error('Error sending email');
   }
 }
