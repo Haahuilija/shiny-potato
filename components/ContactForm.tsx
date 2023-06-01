@@ -1,15 +1,19 @@
+// Import required packages and modules
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import validateForm from './validateForm';
 import { TailSpin } from 'react-loader-spinner';
 
+// Declare global interface for window object
 declare global {
   interface Window {
     getToken: (token: string) => Promise<void>;
   }
 }
 
+// ContactForm component
 const ContactForm = () => {
+  // Define state variables
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -19,26 +23,37 @@ const ContactForm = () => {
   const [showSuccessVideo, setShowSuccessVideo] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  // This useEffect hook sets a timer to hide the success video after 4.2 seconds
   useEffect(() => {
     let timerId: number | undefined;
 
     if (showSuccessVideo) {
       timerId = window.setTimeout(() => {
         setShowSuccessVideo(false);
-      }, 4200); // hide the video after 4.2 seconds
+      }, 4200); 
     }
 
+    // Clear the timer if the component is unmounted
     return () => {
       if (timerId) {
-        window.clearTimeout(timerId); // clear timeout if the component is unmounted
+        window.clearTimeout(timerId);
       }
     };
   }, [showSuccessVideo]);
 
+  // Handle form submission
   const handleSubmit = async (token: string) => {
     setIsLoading(true);
+
+    // Validate form fields
     const { formIsValid, errors } = validateForm(name, email, message, schedule);
 
+    // Log debugging info to console
+    console.log('handleSubmit function called');
+    console.log('Token received:', token);
+    console.log('Sending form data...');
+
+    // If form is not valid, set error messages and stop processing
     if (!formIsValid) {
       setSubmitStatus(errors);
       setIsLoading(false);
@@ -46,6 +61,17 @@ const ContactForm = () => {
     }
 
     try {
+
+      // Log form data to console
+      console.log('Name:', name);
+      console.log('Email:', email);
+      console.log('Message:', message);
+      console.log('Schedule:', schedule);
+      console.log('Other:', other);
+      console.log('Token:', token);
+
+      // Prepare form data for submission
+
       const formObject = {
         name: name,
         email: email,
@@ -54,6 +80,15 @@ const ContactForm = () => {
         other: other,
         token: token,
       };
+
+      console.log('Form Data:', formObject);
+
+      // Send form data to server
+      const response = await axios.post('/api/handleToken', formObject);
+
+      console.log('Form data sent successfully.');
+
+      // If form submission is successful, clear form fields and show success video
 
       const response = await axios.post('/api/handleToken', formObject);
 
@@ -73,18 +108,20 @@ const ContactForm = () => {
     } catch (error) {
       console.error(error);
       setSubmitStatus({ errorMessage: 'Error sending message' });
-
     }
   };
 
+  // Function to get reCAPTCHA token and submit form
   const getToken = async (token: string): Promise<void> => {
     await handleSubmit(token);
   };
 
+  // Assign getToken function to global window object
   useEffect(() => {
     window.getToken = getToken;
   }, [name, email, message, schedule, other]); // pass the state variables as dependencies
 
+  // Render the form
   return (
     <form className="contact-form" id="demo-form">
       <div className="form-group">

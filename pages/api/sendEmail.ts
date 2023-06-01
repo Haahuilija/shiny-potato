@@ -17,7 +17,7 @@ export default async function sendEmail(
     const msg: MailDataRequired = {
       to: EMAIL_TO || 'default@example.com',
       from: EMAIL_FROM || 'default@example.com',
-      subject: ` ${name} lähetti viestin osoitteesta (${email})`,
+      subject: `${name} lähetti viestin osoitteesta (${email})`,
       text: message,
       html: `<p>${message}</p>`,
       content: []
