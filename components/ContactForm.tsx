@@ -30,7 +30,7 @@ const ContactForm = () => {
     if (showSuccessVideo) {
       timerId = window.setTimeout(() => {
         setShowSuccessVideo(false);
-      }, 4200); 
+      }, 4200);
     }
 
     // Clear the timer if the component is unmounted
@@ -85,12 +85,7 @@ const ContactForm = () => {
 
       // Send form data to server
       const response = await axios.post('/api/handleToken', formObject);
-
       console.log('Form data sent successfully.');
-
-      // If form submission is successful, clear form fields and show success video
-
-      const response = await axios.post('/api/handleToken', formObject);
 
       if (response.status === 200) {
         const data = response.data;
