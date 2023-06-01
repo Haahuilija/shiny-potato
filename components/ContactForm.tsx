@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import validateForm from './validateForm';
+import { TailSpin } from 'react-loader-spinner';
 
 declare global {
   interface Window {
@@ -13,8 +15,9 @@ const ContactForm = () => {
   const [message, setMessage] = useState('');
   const [schedule, setSchedule] = useState('');
   const [other, setOther] = useState('');
-  const [submitStatus, setSubmitStatus] = useState('');
+  const [submitStatus, setSubmitStatus] = useState<Record<string, string>>({});
   const [showSuccessVideo, setShowSuccessVideo] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let timerId: number | undefined;
@@ -22,7 +25,7 @@ const ContactForm = () => {
     if (showSuccessVideo) {
       timerId = window.setTimeout(() => {
         setShowSuccessVideo(false);
-      }, 2800); // hide the video after 5 seconds
+      }, 4200); // hide the video after 4.2 seconds
     }
 
     return () => {
@@ -33,18 +36,16 @@ const ContactForm = () => {
   }, [showSuccessVideo]);
 
   const handleSubmit = async (token: string) => {
-    console.log('handleSubmit function called');
-    console.log('Token received:', token);
-    console.log('Sending form data...');
+    setIsLoading(true);
+    const { formIsValid, errors } = validateForm(name, email, message, schedule);
+
+    if (!formIsValid) {
+      setSubmitStatus(errors);
+      setIsLoading(false);
+      return;
+    }
 
     try {
-      console.log('Name:', name);
-      console.log('Email:', email);
-      console.log('Message:', message);
-      console.log('Schedule:', schedule);
-      console.log('Other:', other);
-      console.log('Token:', token);
-
       const formObject = {
         name: name,
         email: email,
@@ -54,11 +55,7 @@ const ContactForm = () => {
         token: token,
       };
 
-      console.log('Form Data:', formObject);
-
       const response = await axios.post('/api/handleToken', formObject);
-
-      console.log('Form data sent successfully.');
 
       if (response.status === 200) {
         const data = response.data;
@@ -68,18 +65,19 @@ const ContactForm = () => {
         setMessage('');
         setSchedule('');
         setOther('');
+        setIsLoading(false);
         setShowSuccessVideo(true);
       } else {
         throw new Error('Error sending message');
       }
     } catch (error) {
       console.error(error);
-      setSubmitStatus('Error sending message');
+      setSubmitStatus({ errorMessage: 'Error sending message' });
+
     }
   };
 
   const getToken = async (token: string): Promise<void> => {
-    console.log('Token:', token);
     await handleSubmit(token);
   };
 
@@ -98,10 +96,11 @@ const ContactForm = () => {
           placeholder="Etunimi Sukunimi"
           value={name}
           onChange={(event) => {
-            console.log(event.target.value);
             setName(event.target.value);
+            setSubmitStatus({ errorMessage: '' });
           }}
         />
+        {submitStatus?.name && <div className="error">{submitStatus.name}</div>}
       </div>
       <div className="form-group">
         <label htmlFor="email">Sähköposti:</label>
@@ -112,10 +111,11 @@ const ContactForm = () => {
           placeholder="Sähköpostiosoite, johon haluat minun vastaavan"
           value={email}
           onChange={(event) => {
-            console.log(event.target.value);
             setEmail(event.target.value);
+            setSubmitStatus({ errorMessage: '' });
           }}
         />
+        {submitStatus?.email && <div className="error">{submitStatus.email}</div>}
       </div>
       <div className="form-group">
         <label htmlFor="message">Millainen teksti kyseessä:</label>
@@ -126,10 +126,11 @@ const ContactForm = () => {
           rows={8}
           value={message}
           onChange={(event) => {
-            console.log(event.target.value);
             setMessage(event.target.value);
+            setSubmitStatus({ errorMessage: '' });
           }}
         ></textarea>
+        {submitStatus?.message && <div className="error">{submitStatus.message}</div>}
       </div>
       <div className="form-group">
         <label htmlFor="schedule">Aikataulu:</label>
@@ -140,10 +141,11 @@ const ContactForm = () => {
           placeholder="Esim. Kahden viikon sisään, 10.9. mennessä"
           value={schedule}
           onChange={(event) => {
-            console.log(event.target.value);
             setSchedule(event.target.value);
+            setSubmitStatus({ errorMessage: '' });
           }}
         />
+        {submitStatus?.schedule && <div className="error">{submitStatus.schedule}</div>}
       </div>
       <div className="form-group">
         <label htmlFor="other">Muuta:</label>
@@ -154,7 +156,6 @@ const ContactForm = () => {
           rows={5}
           value={other}
           onChange={(event) => {
-            console.log(event.target.value);
             setOther(event.target.value);
           }}
         ></textarea>
@@ -164,14 +165,19 @@ const ContactForm = () => {
         data-sitekey="6LdUyYwlAAAAAGaNvJAKC6916P2r9Qhl4jL47Ejk"
         data-callback="getToken"
         type="submit"
-        disabled={submitStatus !== ''}
+        disabled={submitStatus?.errorMessage !== '' || isLoading}
       >
-        Lähetä
+        {isLoading ? (
+          <TailSpin color="#00BFFF" height={20} width={20} ariaLabel="tail-spin-loading" radius="1"
+          />
+        ) : (
+          "Lähetä"
+        )}
       </button>
-      {submitStatus && <p>{submitStatus}</p>}
+      {submitStatus?.errorMessage && <p>{submitStatus?.errorMessage}</p>}
       {showSuccessVideo && (
         <div className="overlay">
-          <img className="success-gif" src="/success3.gif" alt="Submission Successful" />
+          <img className="success-gif" src="/success4.gif" alt="Submission Successful" />
           <p className="success-message">Viesti lähetetty</p>
         </div>
       )
