@@ -17,7 +17,7 @@ export default async function sendEmail(
     const msg: MailDataRequired = {
       to: EMAIL_TO || 'default@example.com',
       from: EMAIL_FROM || 'default@example.com',
-      subject: `New message from ${name} (${email})`,
+      subject: `${name} lähetti viestin osoitteesta (${email})`,
       text: message,
       html: `<p>${message}</p>`,
       content: []
@@ -25,12 +25,12 @@ export default async function sendEmail(
 
     // Add schedule and other if available
     if (schedule) {
-      msg.text += `\n\nSchedule:\n${schedule}`;
-      msg.html += `<p>Schedule:</p><pre>${schedule}</pre>`;
+      msg.text += `\n\nAikataulu:\n${schedule}`;
+      msg.html += `<p>Aikataulu:</p><pre>${schedule}</pre>`;
     }
     if (other) {
-      msg.text += `\n\nOther:\n${other}`;
-      msg.html += `<p>Other:</p><pre>${other}</pre>`;
+      msg.text += `\n\nMuuta:\n${other}`;
+      msg.html += `<p>Muuta:</p><pre>${other}</pre>`;
     }
 
     console.log('Sending email...');
