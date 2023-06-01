@@ -245,11 +245,12 @@ label {
 }
 
 .success-gif {
-  max-width: 10%;
-  max-height: 10%;
+  max-width: 25%;
+  max-height: 25%;
 }
 
 .success-message {
   margin-top: 20px;
+  font-size: clamp(30px, 5vw, 70px);
   color: #ffffff; /* set this to whatever color you want the text to be */
 }
