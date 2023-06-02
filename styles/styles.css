@@ -1,8 +1,10 @@
 /* Basic styling */
 body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17.5px;
+  font-weight: 600;
   line-height: 1.5;
+  text-shadow: 1px 1px #ccc;
   color: #333;
   margin: 0;
   padding: 0;
@@ -21,7 +23,6 @@ body {
 
 /* Header styling */
 header {
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -32,15 +33,17 @@ header {
 }
 
 .header_h1 {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   left: 0;
-  height: 10vh; /* Changed to 10% of the viewport height */
-  width: 45vw; /* Changed to 60% of the viewport width */
-  font-size: clamp(30px, 5vw, 70px); /* Minimum: 30px, Maximum: 5vw, Fallback: 50px Changed to a relative font size based on the viewport width */
+  height: auto;
+  /* Changed to 10% of the viewport height */
+  width: 40vw;
+  /* Changed to 60% of the viewport width */
+  font-size: clamp(30px, 6vw, 65px);
+  /* Minimum: 30px, Maximum: 5vw, Fallback: 50px Changed to a relative font size based on the viewport width */
   font-weight: bold;
   text-transform: capitalize;
   text-align: center;
@@ -49,20 +52,31 @@ header {
 }
 
 .header_h2 {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   left: 0;
-  height: 35vh; /* Changed to 35% of the viewport height */
-  width: 45vw; /* Changed to 60% of the viewport width */
-  font-size: clamp(10px, 2.5vw, 30px); /* Minimum: 30px, Maximum: 5vw, Fallback: 50px Changed to a relative font size based on the viewport width */
+  height: auto;
+  /* Changed to 35% of the viewport height */
+  width: 40vw;
+  /* Changed to 60% of the viewport width */
+  font-size: clamp(20px, 3vw, 35px);
+  /* Minimum: 30px, Maximum: 3vw, Fallback: 50px Changed to a relative font size based on the viewport width */
   font-weight: bold;
   text-transform: lowercase;
   text-align: center;
-  color: rgba(0, 0, 0, 0.995);
+  color: rgb(0, 0, 0);
   text-shadow: 2px 2px #ffffff;
+}
+
+@media (max-width: 600px) {
+  .header_h1 {
+    font-size: clamp(20px, 5vw, 50px);  /* Adjust these values to suit your design */
+  }
+  .header_h2 {
+    font-size: clamp(10px, 2.5vw, 25px);  /* Adjust these values to suit your design */
+  }
 }
 
 /* Description text styling */
@@ -93,35 +107,36 @@ header {
   min-height: 350px;
   padding: 5px;
   width: 100%;
-  /* Update width to 100% */
   flex-grow: 1;
-  /* Add flex-grow property */
-}
-
-.bubble-container:nth-child(odd) {
-  margin-right: auto;
-  flex-direction: row-reverse;
-  background-size: cover;
-  background-position: right;
-}
-
-.bubble-container:nth-child(even) {
-  margin-left: auto;
-  background-size: cover;
-  background-position: left;
 }
 
 .bubble {
   border-radius: 10px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 150px auto;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
   grid-template-areas:
-    "image title"
-    "image list";
+    "image"
+    "title"
+    "list";
   flex-direction: column;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .bubble-container {
+    width: 100%;
+    background-position: center;
+  }
+
+  .bubble {
+    grid-template-columns: 150px auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "image title"
+      "image list";
+  }
 }
 
 .bubble-icon {
@@ -142,7 +157,8 @@ header {
   margin-bottom: 10px;
   text-align: left;
   max-width: 100%;
-  padding-left: 50px;
+  padding-left: 5vw;
+  font-size: clamp(14px, 4vw, 24px);
 }
 
 .bubble-list {
@@ -151,7 +167,8 @@ header {
   justify-self: start;
   text-align: left;
   margin: 0;
-  padding-left: 50px;
+  padding-left: 5vw;
+  font-size: clamp(12px, 3vw, 20px);
 }
 
 /* Contact form styling */
@@ -241,7 +258,8 @@ label {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* You can adjust this to change the background color and opacity */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* You can adjust this to change the background color and opacity */
 }
 
 .success-gif {
@@ -252,5 +270,12 @@ label {
 .success-message {
   margin-top: 20px;
   font-size: clamp(30px, 5vw, 70px);
-  color: #ffffff; /* set this to whatever color you want the text to be */
+  color: #ffffff;
+  /* set this to whatever color you want the text to be */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
