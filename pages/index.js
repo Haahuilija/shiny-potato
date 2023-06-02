@@ -18,8 +18,12 @@ export default function Home() {
     return (
         <div>
             <Head>
-                <title>Kielenhuolto ja selkeä kieli - Etusivu</title>
+                <title>Tua Tähkäpää - Selkeä kieli ja kielenhuolto</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta name="description"
+                    content="Tua Tähkäpää tarjoaa selkeän kielen ja kielenhuollon palveluita.
+                            Palvelut kattavat tekstien käsittelyn, 
+                            kuten lehtiartikkelit, verkkosivutekstit, ja opinnäytetyöt." />
             </Head>
             <Header />
             <div className="bubbles-container">

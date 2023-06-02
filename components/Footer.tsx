@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="footer-container">
       <p className="footer-text">
-        © {new Date().getFullYear()} Copyright - tuatahkapaa.fi
+        © {new Date().getFullYear()} Copyright - tuatahkapaa.com
       </p>
     </footer>
   );
