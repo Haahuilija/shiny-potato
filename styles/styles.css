@@ -48,6 +48,7 @@ header {
   text-align: center;
   color: rgba(94, 93, 93, 0.771);
   text-shadow: 2px 2px #ffffff;
+  white-space: nowrap;
 }
 
 .header_h2 {
@@ -204,7 +205,21 @@ label {
 
 @media (max-width: 600px) {
   .form-input::placeholder {
-    font-size: 11px;  /* Adjust this size as needed */
+    font-size: 14px;
+  }
+}
+
+/* For larger phones */
+@media (max-width: 500px) {
+  .form-input::placeholder {
+    font-size: 12px;
+  }
+}
+
+/* For smaller phones */
+@media (max-width: 400px) {
+  .form-input::placeholder {
+    font-size: 10px;
   }
 }
 
