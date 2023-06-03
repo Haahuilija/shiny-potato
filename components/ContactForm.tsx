@@ -154,7 +154,7 @@ const ContactForm = () => {
         <textarea
           className="form-control form-input"
           id="message"
-          placeholder='tekstilaji, pituus, aihe'
+          placeholder='Tekstilaji, pituus, aihe'
           rows={8}
           value={message}
           onChange={(event) => {
