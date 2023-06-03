@@ -4,7 +4,6 @@ body {
   font-size: 17.5px;
   font-weight: 600;
   line-height: 1.5;
-  text-shadow: 1px 1px #ccc;
   color: #333;
   margin: 0;
   padding: 0;
@@ -40,10 +39,10 @@ header {
   left: 0;
   height: auto;
   /* Changed to 10% of the viewport height */
-  width: 40vw;
+  width: 42.5vw;
   /* Changed to 60% of the viewport width */
-  font-size: clamp(30px, 6vw, 65px);
-  /* Minimum: 30px, Maximum: 5vw, Fallback: 50px Changed to a relative font size based on the viewport width */
+  font-size: clamp(40px, 6vw, 60px);
+  /* Minimum: ??px, Maximum: ?vw, Fallback: ??px Changed to a relative font size based on the viewport width */
   font-weight: bold;
   text-transform: capitalize;
   text-align: center;
@@ -59,12 +58,11 @@ header {
   left: 0;
   height: auto;
   /* Changed to 35% of the viewport height */
-  width: 40vw;
+  width: 42.5vw;
   /* Changed to 60% of the viewport width */
-  font-size: clamp(20px, 3vw, 35px);
-  /* Minimum: 30px, Maximum: 3vw, Fallback: 50px Changed to a relative font size based on the viewport width */
+  font-size: clamp(25px, 3vw, 30px);
+  /* Minimum: ??px, Maximum: ?vw, Fallback: ??px Changed to a relative font size based on the viewport width */
   font-weight: bold;
-  text-transform: lowercase;
   text-align: center;
   color: rgb(0, 0, 0);
   text-shadow: 2px 2px #ffffff;
@@ -72,10 +70,10 @@ header {
 
 @media (max-width: 600px) {
   .header_h1 {
-    font-size: clamp(20px, 5vw, 50px);  /* Adjust these values to suit your design */
+    font-size: clamp(25px, 5vw, 50px);  /* Adjust these values to suit your design */
   }
   .header_h2 {
-    font-size: clamp(10px, 2.5vw, 25px);  /* Adjust these values to suit your design */
+    font-size: clamp(15px, 2.5vw, 25px);  /* Adjust these values to suit your design */
   }
 }
 
