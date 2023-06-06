@@ -60,7 +60,7 @@ export default function Home() {
                         background={bubbleImage3}
                         title="Hinnasto"
                         items={[
-                            "Laskutan tekemästäni työstä 50e/h UKKO.fi-kevytyrittäjänä.",
+                            "Laskutan tekemästäni työstä 45e/h UKKO.fi-kevytyrittäjänä.",
                             "Minimilaskutus on yksi tunti.",
                             "Pyydä tarjous jos sinulla on pitkä teksti (yli 10 sivua), kuten opinnäytetyö, tarkistusta vailla!"
                         ]}
