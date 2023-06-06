@@ -62,7 +62,7 @@ export default function Home() {
                         items={[
                             "Laskutan tekemästäni työstä 45e/h UKKO.fi-kevytyrittäjänä.",
                             "Minimilaskutus on yksi tunti.",
-                            "Pyydä tarjous jos sinulla on pitkä teksti (yli 10 sivua), kuten opinnäytetyö, tarkistusta vailla!"
+                            "Pyydä tarjous, jos sinulla on pitkä teksti (yli 10 sivua), kuten opinnäytetyö, tarkistusta vailla!"
                         ]}
                     />
                 </div>
